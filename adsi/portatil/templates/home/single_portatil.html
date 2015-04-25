@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	portatil
+{% endblock %}
+
+{% block content %}
+	<h3>Equipo seleccionado</h3>
+	<h2>{{ portatil.marca }}  {{ portatil.color }}</h2>
+	<br>
+	
+
+	{% if portatil.imagen %}
+	<img src="/media/{{ portatil.imagen }}" width ="500px" heigth ="500px">
+	{% endif %}
+	<br>
+	<p><b>Marca:    </b>{{ portatil.marca }}</p>
+	<p><b>Color:    </b>{{ portatil.color }} </p>
+	<p><b>Sistema operativo:    </b>{{ portatil.sistema_operativo }} </p>
+	<br>
+	<a href ="/portatiles/page/1">Mostrar lista de Productos</a>
+{% endblock %}

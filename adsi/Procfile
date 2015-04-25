@@ -1,0 +1,1 @@
+web: gunicorn adsi.wsgi -b 0.0.0.0:$PORT

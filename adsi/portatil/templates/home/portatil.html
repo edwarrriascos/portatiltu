@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Lista de Productos
+{% endblock %}
+{% block content %}
+	<h1> Lista de Productos </h1>
+	<br>
+	{% if user.is_authenticated %}
+
+		<a class ="btn btn-primary" href="{% url 'vista_agregar_producto' %}"> <li class="icon-plus"></li>Agregar un nuevo producto</a>
+
+	{% endif %}
+	{% if portatiles %}
+	<table class = "table table-hover">
+		<theader>
+			<tr>
+				<th>Marca</th>
+				<th>Color</th>
+			
+			</tr>
+		</theader>
+		{% for p in portatiles %}
+			<tbody>
+				<tr>
+					<td>{{ p.marca }}</td>
+					<td>{{ p.color }}</td>
+					<td><a class="btn" href="/portatil/{{ p.id }}"><li class = "icon-search"></li>Ver</a></td>
+					<td><a class="btn" href="#"><li class = "icon-shoping-cart"></li>Comprar</a></td>
+						{% if user.is_authenticated %}
+							<td><a class = "btn" href="/edit/portatil/{{ p.id }}"><li class = "icon-pencil"></li>Editar </a></td>
+						{% endif %}
+					</td>
+				</tr>
+			</tbody>
+		{% endfor %}
+	</table>
+	{% else %}
+		<h2>No existen Equipos activos a la venta</h2>
+	{% endif %}
+
+	{% if portatiles %}
+	<div class="pagination">
+		<div class="pagination pagination-centered">
+			<ul>
+				<li><a href="/portatiles/page/1" > << </a></li>
+				{% if portatiles.has_previous %}
+				<li><a href="/portatiles/page/{{ portatiles.previous_page_number }}">Anterior</a></li>
+				{% else %}
+				<li><a href="#">Anterior</a></li>
+				{% endif %}
+
+				{% if portatiles.has_next %}
+				<li><a href="/portatiles/page/{{ portatiles.next_page_number }}">Siguiente</a></li>
+				{% else %}
+				<li><a href="#">Siguiente</a></li>
+				{% endif %}
+					<li><a href="/portatiles/page/{{ portatiles.paginator.num_pages}}"> >> </a></li>
+			</ul>
+		</div>
+	</div>
+			<br>
+			<h4>Pagina {{ portatiles.number }} de {{ portatiles.paginator.num_pages}}</h4>
+		{% endif %}
+		
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Inicio
+{% endblock %}
+
+{% block content %}
+	<h1 align ="center">Bienvenidos a nuestra tienda virtual LAPTOP S.A</h1>
+	<p>
+	<center><img src="/media/images/portatil2.png" WIDTH=700 HEIGHT=300 BORDER=2 VSPACE=3 HSPACE=3></center>
+	<h2 aling ="center">Conosca nuestro nuevo catalogo de equipos de ultima generación</h2>
+	<input type="text" value="" id="result">
+	<input type="button" onclick="Dajaxice.examples.randomize(Dajax.process)" value="Random!">
+	<p>
+	<select onchange="Dajaxice.examples.updatecombo(Dajax.process, {'option':this.value})" size="1">
+    	<option value="0">Select...</option>
+    	<option value="0">Spain</option>
+    	<option value="1">France</option>
+    	<option value="2">United Kingdom</option>
+	</select>
+<select id="combo2" onchange="" size="1"></select>
+{% endblock %}
